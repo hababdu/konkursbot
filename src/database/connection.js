@@ -3,7 +3,21 @@ const config = require('../config/config');
 
 let sequelize;
 
-if (config.db.dialect === 'postgres') {
+if (config.db.url) {
+  // Neon, Supabase va shunga o'xshash provayderlar bitta connection-string beradi.
+  // Bu holatlarda SSL majburiy bo'ladi.
+  sequelize = new Sequelize(config.db.url, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+  });
+} else if (config.db.dialect === 'postgres') {
   sequelize = new Sequelize(
     config.db.database,
     config.db.username,
@@ -16,7 +30,6 @@ if (config.db.dialect === 'postgres') {
     }
   );
 } else {
-  // sqlite - qo'shimcha sozlashsiz, tez ishga tushirish uchun
   sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: config.db.storage,

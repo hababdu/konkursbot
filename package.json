@@ -1,0 +1,26 @@
+{
+  "name": "konkurs-bot",
+  "version": "1.0.0",
+  "description": "Kitoblar bo'yicha test-konkurs o'tkazuvchi Telegram bot",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "migrate": "node src/database/migrate.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.16.3",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

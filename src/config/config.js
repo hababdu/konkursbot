@@ -10,6 +10,7 @@ module.exports = {
     .map(Number),
 
   db: {
+    url: process.env.DATABASE_URL || null, // Neon/Supabase kabi provayderlar uchun
     dialect: process.env.DB_DIALECT || 'sqlite',
     storage: process.env.DB_STORAGE || './database.sqlite',
     host: process.env.DB_HOST,

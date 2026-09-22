@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../connection');
-
+const { Question } = require('./Question'); // yoki fayl joylashgan yo'lga qarab to'g'ri ko'rsating
 const UserAnswer = sequelize.define('UserAnswer', {
   id: {
     type: DataTypes.INTEGER,

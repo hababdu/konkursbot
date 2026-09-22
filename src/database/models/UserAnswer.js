@@ -68,3 +68,8 @@ const UserQuizAttempt = sequelize.define('UserQuizAttempt', {
 });
 
 module.exports = { UserAnswer, UserQuizAttempt };
+
+// Test tugagach ball hisoblash uchun UserAnswer -> Question bog'lanishi kerak
+// (finishQuiz funksiyasi shu bog'lanish orqali savollarni kitob bo'yicha filtrlaydi)
+UserAnswer.belongsTo(Question, { foreignKey: 'questionId' });
+Question.hasMany(UserAnswer, { foreignKey: 'questionId' });
